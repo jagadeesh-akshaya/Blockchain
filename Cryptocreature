@@ -1,0 +1,31 @@
+function find_index(address owner, uint256 _tokenId) view returns(uint256 _index) {
+    require(tokenExists[_tokenId]);
+    require(owners[_tokenId] == owner);
+    for (int i = 0; i < balanceOf(owner); ++i) {
+       if (creatures[owner][i].TokenId == +tokenId) {
+           return i;
+       } 
+    }
+
+    function remove(address owner, uint256 index) view {
+        creatures[owner][index] = creatures[owner][balanceOf(owner) -1];
+        delete creatures[owner][balanceOf(owner) -1]
+    }
+
+    function takeOwnership(unint256 _tokenId) {
+
+    }
+
+    function removeFromTokenList(address owner, uint256 _tokenId) private {
+        uint index = find_index(owner, _tokenId);
+        remove(owner, index);
+    }
+
+    function transfer(address _to, uint256 _tokenId) {
+
+    }
+
+    function tokenOfOwnerByIndex(address _owner, uint 256 _index) constant returns (uint256 _tokenId) {
+        return creatures[_owner][_index].TokenId;
+    }
+}
